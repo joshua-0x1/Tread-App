@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-main: #fafafa;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card-hover: rgba(244, 244, 245, 1);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-color-active: rgba(234, 88, 12, 0.5);
+    --text-primary: #09090b;
+    --text-secondary: #71717a;
+    --accent-orange: #ea580c;
+    --accent-threads: #ffffff;
+  }
+
+  .dark {
+    --bg-main: #09090b;
+    --bg-card: rgba(24, 24, 27, 0.85);
+    --bg-card-hover: rgba(39, 39, 42, 0.9);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-color-active: rgba(249, 115, 22, 0.6);
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --accent-orange: #f97316;
+    --accent-threads: #18181b;
+  }
+
+  .dark input, .dark textarea {
+    background-color: #161618 !important; /* Premium dark input background */
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+  }
+
+  .dark input::placeholder, .dark textarea::placeholder {
+    color: #71717a !important;
+  }
+
+  .dark input:focus, .dark textarea:focus {
+    border-color: #f97316 !important;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: Geist Mono, ui-monospace, monospace;
+    overflow-x: hidden;
+  }
+
+  button, [role="button"] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.font-sans-custom {
+  font-family: Geist Mono, ui-monospace, monospace !important;
+}
+
+.font-serif-custom {
+  font-family: serif !important;
+}
+
+.font-mono-custom {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Glassmorphism light utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-panel-hover:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-color-active);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px -4px rgba(234, 88, 12, 0.12);
+}
+
+/* Micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
